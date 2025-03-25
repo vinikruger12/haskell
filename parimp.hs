@@ -1,0 +1,1 @@
+parimp a = if rem a 2 == 0 then putStrLn "par" else putStrLn "impar"
