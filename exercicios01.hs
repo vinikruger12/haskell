@@ -27,19 +27,12 @@ somaPares a = if a <= 0 then 0
 
 {-Soma potencia-}
 somaPot2m m 0 = m
-somaPot2m m n = 2**n * m + somaPot2m m (n-1)
+somaPot2m m n = 2^n * m + somaPot2m m (n-1)
 
 {-Primos-}
-primos a
- |a <= 1 = False
- |a == 2 = True
- |rem a 2 == 0 = False
- |otherwise = (procura a (ceiling(sqrt(fromIntegral a))) 3)
- 
-procura a b c
- |c > b = True
- | rem a c == 0 = False
- |otherwise = procura a b (c+2)
+primo n = primoo n (n-1)
+primoo n 1 = True
+primoo n d = if rem n d == 0 then False else primoo n (d-1)
 
 
 {-Pi-}
