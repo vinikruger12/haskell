@@ -1,3 +1,6 @@
+foo a b = if a == b then b else if a > b then foo (a-b) b else foo a (b-a)
+
+impares :: Integral a => [a] -> [a]
 impares [] = []
 impares (x:xs) = if rem x 2 /= 0 then x:impares xs else impares xs
 

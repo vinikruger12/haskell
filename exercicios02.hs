@@ -18,7 +18,8 @@ nPrimeiros n (x:xs) = x:nPrimeiros (n-1) xs
 nUltimos n xs = inverso (nPrimeiros n (inverso xs)) 
 
 {-Soma2 5-}
-soma2 _ [] = []
+soma2 xs [] = []
+soma2 [] ys = []
 soma2 (x:xs) (y:ys) = x+y:soma2 xs ys
 
 {-Pot2 6-}
@@ -105,3 +106,7 @@ minusculas (x:xs) =let m = (char2i x)in if m >=65 && m<=90 then (int2c (m+32)):m
 
 maiusculas [] = []
 maiusculas (x:xs) =let m = (char2i x)in if m >=97 && m<=122 then (int2c (m-32)):maiusculas xs else x:maiusculas xs
+
+
+pares [] = []
+pares (x:xs) = if rem x 2 == 0 then x:pares xs else pares xs
