@@ -27,3 +27,8 @@ primo n = primod n (n-1)
 primod :: Integral t => t -> t -> Bool
 primod n 1 = True
 primod n d = if rem n d == 0 then False else primod n (d-1) 
+
+primos 1 = []
+primos n = if primo n then n:primos (n-1) else primos (n-1)
+
+primon = [n|n <- [2..1000000], primo n]
