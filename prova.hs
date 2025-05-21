@@ -1,22 +1,30 @@
-import Data.Time.Format.ISO8601 (yearFormat)
-primo n = prim0 n (n-1)
-prim0 n 1 = True
-prim0 n d = if rem n d == 0 then False else prim0 n (d-1)
+{-Acho que tiro 6-}
 
-primod = [(x)|x <- [2..1000],primo x]
-numero = [n|n<- [1..10000]]
+{-1 certo-}
+nprimeiros _ [] = []
+nprimeiros 0 xs = []
+nprimeiros n (x:xs) = x:nprimeiros (n-1) xs
 
+{-2-}
+inverso [] = []
+inverso (x:xs) = inverso xs ++ [x]
+ultimo xs = head (inverso xs)
 
-impares [] = []
-impares (x:xs) = if rem x 2 == 0 then impares xs else x:impares xs
+{-3 certo-} 
+replicar1 0 x = []
+replicar1 n x = x:replicar1 (n-1) x
+replicar _ [] = []
+replicar n (x:xs) = replicar1 n x++replicar n xs
 
-pares [] = []
-pares (x:xs) = if rem x 2 == 0 then x:pares xs else pares xs
+{-4 certo-}
+aprim _ [] = []
+aprim 0 xs = xs
+aprim n (x:xs) = aprim (n-1) xs
+ 
+fatiar n m xs = aprim n (nprimeiros (m+1) xs)
 
+{-5 certo-}
 primeiro (x,y) = x
-primeiros [] = []
-primeiros (x:xs) = primeiro x:primeiros xs
-
 segundo (x,y) = y
-segundos [] = []
-segundos (x:xs) = segundo x:segundos xs
+menores [] = []
+menores (x:xs) = if primeiro x < segundo x then x:menores xs else menores xs 
