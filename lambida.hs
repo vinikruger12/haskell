@@ -1,32 +1,9 @@
-{-1-}
-{-
-a) a b c d -> (a b) c d -> ((a b) c) d - > (((a b) c ) d)
+{-- (\x -> x+1) n 
 
-b)
-λq.λi.q -> λq.(λi.q) -> (λq.(λi.q))
+(\x -> \y -> x+y) n m
 
-c) λx.λy.λz.x z (y z) -> λx.λy.λz.(x z (y z)) -> λx.λy.(λz.(x z (y z)))
-    -> λx.(λy.(λz.(x z (y z)))) -> (λx.(λy.(λz.(x z (y z)))))
+(\xy -> x + y) n m
 
--}
-
-{-2-}
-    {-
-    a) λs.s z λq.s q -> as variáveis  'z' estão livres.
-
-    b) (λs.s z) λq.w λw.w q z s -> as variáveis 'z' e 'w' e 's' estão livres.
-
-    c) (λs.s) (λq.q s) -> as variáves livres são 's'.
-
-    d) λz.((λs.s q) (λq.q z)) λz.z z -> as variáves livres são a 'q'.
-
--}
-
-{-3-}
-{-
-
-
-
--}
-
+(\x y w u -> x (y w) u) (\s z -> s (s z)) (\s z -> s (s (s z)))
+--}
 
