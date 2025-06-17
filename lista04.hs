@@ -34,3 +34,7 @@ shorten = map (\(ns, w) -> (unique ns, w))
 
 unique = foldr (\x seen -> if x `elem` seen then seen else x : seen) []
 
+imprimir :: [String] -> IO ()
+imprimir [] = putStr "\n\n\n"
+imprimir (l:ls) = do putStr (l++ "\n\n") 
+                     imprimir ls
