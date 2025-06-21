@@ -38,3 +38,17 @@ imprimir :: [String] -> IO ()
 imprimir [] = putStr "\n\n\n"
 imprimir (l:ls) = do putStr (l++ "\n\n") 
                      imprimir ls
+
+makeindex :: Doc -> [([Int], Word')]
+makeindex txt = shorten . almalgamate . sortLs . allNumWords . numLines $ txt
+
+formatIndex :: [([Int], Word')] -> String
+formatIndex xs = unlines [w ++ " - " ++ show ns | (ns, w) <- xs]
+
+
+main :: IO ()
+main = do
+    putStr "Arquivos: "
+    arq <- getLine
+    txt <- readFile arq
+    putStr $ formatIndex (makeindex txt)

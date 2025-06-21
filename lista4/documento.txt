@@ -1,0 +1,3 @@
+Departamento de Ciencia da Computacao
+Curso de Ciencia da Computacao
+Programacao Funcional
