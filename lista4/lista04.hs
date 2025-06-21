@@ -16,7 +16,9 @@ numLineso n (x:xs) = (n,x):numLineso (n+1) xs
 
 allNumWords :: [(Int,Line)] -> [(Int,Word')]
 allNumWords [] = []
-allNumWords ((n,l):xs) = [ (n,w) | w <- words l, length w > 3 ] ++ allNumWords xs
+allNumWords ((n,l):xs) =
+  [ (n,w) | w <- words l, length w > 3 ] ++ allNumWords xs
+
 
 
 {-D-}
