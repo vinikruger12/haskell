@@ -16,16 +16,17 @@ numLineso n (x:xs) = (n,x):numLineso (n+1) xs
 
 {-C-}
 
-allNumWords :: [(Int,Line)] -> [(Int,Word')]
 allNumWords [] = []
-allNumWords ((n,l):xs) = [ (n,w) | w <- words l, length w > 3 ] ++ allNumWords xs
+allNumWords ((x,l):xs) = zip (repeat x) (words l) ++ allNumWords xs
 
+remover3 :: [(Int, Word')] -> [(Int,Word')]
+remover3 = filter (\(_, w) -> length w > 3)
 
 {-D-}
 
 sortLs :: [(Int, Word')] -> [(Int, Word')]
 sortLs = sortBy (\(_, w1) (_, w2) -> compare w1 w2)
-
+ 
 
 {-E-}
 
@@ -42,7 +43,7 @@ nUnico = foldr (\x visto -> if x `elem` visto then visto else x : visto) []
 
 
 makeindex :: Doc -> [([Int], Word')]
-makeindex txt = shorten . almalgamate . sortLs . allNumWords . numLines $ txt
+makeindex txt = shorten . almalgamate . sortLs . remover3 . allNumWords . numLines $ txt
 
 
 formatIndex :: [([Int], Word')] -> String
