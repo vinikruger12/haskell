@@ -1,0 +1,1 @@
+data Arvore a = No (Arvore a) (Arvore a)|Folha
